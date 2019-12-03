@@ -1,0 +1,3 @@
+*This file generates the DM domain;
+*DP added some text because your code fucking sucks, Jeff...
+*Writing some QC code. Note that the branch 'qc' is different than the directory 'qc'. One is a directory. The other is a construct of git
