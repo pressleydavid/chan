@@ -4,5 +4,7 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"python.pythonPath": "/Users/david/.local/share/virtualenvs/chan-MWeQo6do/bin/python"
+	}
 }
