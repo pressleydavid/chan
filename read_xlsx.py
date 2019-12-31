@@ -1,5 +1,7 @@
 import pandas as pd
 import openpyxl
+from datetime import date
+import os
 
 def unitMap(param1):
     unitMap = {'1.0':4,
@@ -32,9 +34,29 @@ def unitMap(param1):
 
 
 if __name__ == "__main__":
+    ''' Read in the all.xlsx sheet and map to the Gilead invoicer spreadsheet. '''
     template_cdm = pd.read_excel("/Users/david/projects/cca/clients/ccr/chan/Gilead - SBC - DM 337-1431 - template.xlsx", sheet_name="CDM", header=1)
     template_st = pd.read_excel("/Users/david/projects/cca/clients/ccr/chan/Gilead - SBC - DM 337-1431 - template.xlsx", sheet_name="Study Totals")
     all =pd.read_excel("/Users/david/projects/cca/clients/ccr/chan/all.xlsx", sheet_name="Sheet1", header=1)
+
+    #parse file name to get key for value in all.xlsx project
+    
+    head, tail = os.path.split("/Users/david/projects/cca/clients/ccr/chan/Gilead - SBC - DM 337-1431 - template.xlsx")
+    print(tail)
+
+    #print out as a list for visualization purposes
+    for item in tail.split(" - "):
+        print(item)
+
+    client = tail.split(" - ")[0]
+    print(client)
+    groupID = tail.split(" - ")[1]
+    print(client)
+    fxnID = tail.split(" - ")[2].split(" ")[0]
+    print(fxnID)
+    projectID = tail.split(" - ")[2].split(" ")[1] 
+    print(projectID)
+
 
     #write to csv
     template_cdm.to_csv("data/intermed/cdm.csv")
@@ -70,11 +92,18 @@ if __name__ == "__main__":
             cell = ws.cell(row=row.row, column=row.col, value=row.value)
         except:
             if type(cell).__name__ == 'MergedCell':
-                print("Oh no, the cell is merged!" + str(cell))
+                print(str(cell) +"is a merged cell." )
             else:
-                print("This cell is not merged." + str(cell))
+                print(str(cell) +"is not a merged cell.")
+        
         wb.template = False
-        wb.save('Test.xlsx')
+
+        
+        today = date.today()
+        fileName = os.path.join(head, tail.replace('template', str(today.strftime("%b %Y"))))
+        print(fileName)
+
+        wb.save(
 
 
 
