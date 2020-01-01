@@ -1,5 +1,4 @@
-# chan
-Gilead Invoice Mapper 
+# Gilead Invoice Mapper
 
 Assumptions:
 1.  all.xlsx from this repository is used
