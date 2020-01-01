@@ -40,7 +40,7 @@ def unitMap(param1):
 
 
 if __name__ == "__main__":
-    ''' Read in the all.xlsx sheet and map to the Gilead invoicer spreadsheet. '''
+    ''' Read in the all.xlsx sheet and map to the Gilead invoice spreadsheet. '''
 
     all =pd.read_excel("all.xlsx", sheet_name="Sheet1", header=1)
 
@@ -98,7 +98,7 @@ if __name__ == "__main__":
 
 
         #load workbook template file
-        wb = openpyxl.load_workbook("Gilead - SBC - DM XXX-XXXX - template.xlsx", keep_links=True)
+        wb = openpyxl.load_workbook("Gilead - SBC - DM XXX-XXXX - template.xltx", keep_links=True)
         wb.template = False
         #FYI: have a look at the object type
         type(wb)
